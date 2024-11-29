@@ -1,0 +1,31 @@
+@startuml diagrama_estados
+[*] --> Usuario_sin_Registrar : abre app
+
+Usuario_sin_Registrar --> Estudiante: escoger
+Usuario_sin_Registrar --> Profesor: escoger
+Usuario_sin_Registrar --> Personal_de_Apoyo: escoger
+Estudiante --> Usuario_Conectado : registro exitoso
+Profesor --> Usuario_Conectado: registro exitoso
+Personal_de_Apoyo --> Usuario_Conectado: registro exitoso
+
+Usuario_Desconectado -> [*]
+Usuario_Desconectado -> Usuario_Conectado : inicio de sesión
+Usuario_Conectado ---> Interfaz
+Usuario_Conectado --> Usuario_Desconectado : cierre de sesión
+Interfaz--> Crear_Evento_o_Actividad
+Interfaz---> Abrir_Calendario
+Interfaz---> Abrir_Notificaciones
+Interfaz---> Ajustes
+Interfaz--> Visitar_Evento_o_Actividad
+Interfaz<-- Crear_Evento_o_Actividad : regresar
+Interfaz<- Abrir_Calendario : regresar
+Interfaz<-- Abrir_Notificaciones : regresar
+Interfaz<-- Ajustes : regresar
+Interfaz<-- Visitar_Evento_o_Actividad : regresar
+Visitar_Evento_o_Actividad --> Visitar_Evento_o_Actividad : Comentar
+Interfaz --> Moderar_Publicaciones
+Crear_Evento_o_Actividad --> Crear_Evento_o_Actividad : Editar
+Moderar_Publicaciones --> Moderar_Publicaciones : Aprobar/Denegar
+
+Ajustes --> [*]
+@enduml
