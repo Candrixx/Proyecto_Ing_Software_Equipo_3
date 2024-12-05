@@ -10,7 +10,7 @@ Integrantes:
 Modelo de Dominio
 
 - Diagrama de Clases
-![alt text](image.png)
+![alt text](class_diagram.png)
 
 - Diagrama de Estados
-![alt text](image-2.png)
+![alt text](status_diagram.png)
