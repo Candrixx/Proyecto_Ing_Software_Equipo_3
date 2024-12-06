@@ -14,3 +14,6 @@ Modelo de Dominio
 
 - Diagrama de Estados
 ![alt text](status_diagram.png)
+
+- Diagrama de Casos de Uso
+![alt text](use_case_diagram)
