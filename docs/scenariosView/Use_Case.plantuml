@@ -1,0 +1,29 @@
+@startuml CasoDeUso
+left to right direction
+'Actores
+“Usuario” as usuario
+“Administrador” as admin
+'Contendedor del sistema
+rectangle Campus_Virtual {
+'Casos de uso
+usecase “Iniciar Sesion” as uc1
+usecase “Registrarse” as uc1_1
+usecase “Mostrar tablón de anuncio” as uc2
+usecase “Mostrar calendario” as uc2_1
+usecase “Agregar al calendario” as uc2_2
+usecase “Crear evento” as uc3
+usecase “Publicar investigación” as uc4
+usecase “Editar Perfil” as uc5
+usecase “Moderar Publicaciones” as uc6
+}
+'Conexiones
+usuario ---- uc1
+usuario ---- uc2
+usuario ---- uc3
+usuario ---- uc4
+usuario ---- uc5
+uc6 ---- admin
+uc1 <.. uc1_1 : “<<extends>>”
+uc2 <.. uc2_1 : “<<extends>>”
+uc2 <.. uc2_2 : “<<extends>>”
+@enduml
