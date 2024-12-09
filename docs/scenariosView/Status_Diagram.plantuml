@@ -1,31 +1,59 @@
 @startuml diagrama_estados
-[*] --> Usuario_sin_Registrar : abre app
+state "Relajado" as neutro
+state "Actividad o Evento Anunciado" as avisado
+state "Buscando Actividad o Evento" as buscar
+state "Actividad o Evento Encontrado" as encuentra
+state "Actividad o Evento Guardado" as guardado
+state "Pensando en Idea" as pensando
+state "Estructurando Evento o Actividad" as estruturar
+state "Concretando idea" as concretar
+state "Mostrando Evento o Actividad" as mostrar
 
-Usuario_sin_Registrar --> Estudiante: escoger
-Usuario_sin_Registrar --> Profesor: escoger
-Usuario_sin_Registrar --> Personal_de_Apoyo: escoger
-Estudiante --> Usuario_Conectado : registro exitoso
-Profesor --> Usuario_Conectado: registro exitoso
-Personal_de_Apoyo --> Usuario_Conectado: registro exitoso
+state eleccion1 <<choice>>
 
-Usuario_Desconectado -> [*]
-Usuario_Desconectado -> Usuario_Conectado : inicio de sesión
-Usuario_Conectado ---> Interfaz
-Usuario_Conectado --> Usuario_Desconectado : cierre de sesión
-Interfaz--> Crear_Evento_o_Actividad
-Interfaz---> Abrir_Calendario
-Interfaz---> Abrir_Notificaciones
-Interfaz---> Ajustes
-Interfaz--> Visitar_Evento_o_Actividad
-Interfaz<-- Crear_Evento_o_Actividad : regresar
-Interfaz<- Abrir_Calendario : regresar
-Interfaz<-- Abrir_Notificaciones : regresar
-Interfaz<-- Ajustes : regresar
-Interfaz<-- Visitar_Evento_o_Actividad : regresar
-Visitar_Evento_o_Actividad --> Visitar_Evento_o_Actividad : Comentar
-Interfaz --> Moderar_Publicaciones
-Crear_Evento_o_Actividad --> Crear_Evento_o_Actividad : Editar
-Moderar_Publicaciones --> Moderar_Publicaciones : Aprobar/Denegar
+[*] --> neutro
+neutro --> avisado : es avisado
+neutro --> buscar : motivación
+buscar --> encuentra : clasifica sus prioridades 
+avisado --> eleccion1 : ¿le interesa?
+encuentra --> eleccion1 : ¿le interesa?
+eleccion1 --> neutro : No
+eleccion1 --> guardado : Si
+guardado --> neutro : vuelta al inicio
+neutro --> pensando : surge la creatividad
+pensando --> estruturar : idea ok
+estruturar --> concretar : estrutura ok
+concretar --> mostrar : actividad o evento listo
+mostrar -> neutro : vuelta al inicio
+neutro ---> [*]
 
-Ajustes --> [*]
+'[*] --> Usuario_sin_Registrar : abre app
+
+'Usuario_sin_Registrar --> Estudiante: escoger
+'Usuario_sin_Registrar --> Profesor: escoger
+'Usuario_sin_Registrar --> Personal_de_Apoyo: escoger
+'Estudiante --> Usuario_Conectado : registro exitoso
+'Profesor --> Usuario_Conectado: registro exitoso
+'Personal_de_Apoyo --> Usuario_Conectado: registro exitoso
+
+'Usuario_Desconectado -> [*]
+'Usuario_Desconectado -> Usuario_Conectado : inicio de sesión
+'Usuario_Conectado ---> Interfaz
+'Usuario_Conectado --> Usuario_Desconectado : cierre de sesión
+'Interfaz--> Crear_Evento_o_Actividad
+'Interfaz---> Abrir_Calendario
+'Interfaz---> Abrir_Notificaciones
+'Interfaz---> Ajustes
+'Interfaz--> Visitar_Evento_o_Actividad
+'Interfaz<-- Crear_Evento_o_Actividad : regresar
+'Interfaz<- Abrir_Calendario : regresar
+'Interfaz<-- Abrir_Notificaciones : regresar
+'Interfaz<-- Ajustes : regresar
+'Interfaz<-- Visitar_Evento_o_Actividad : regresar
+'Visitar_Evento_o_Actividad --> Visitar_Evento_o_Actividad : Comentar
+'Interfaz --> Moderar_Publicaciones
+'Crear_Evento_o_Actividad --> Crear_Evento_o_Actividad : Editar
+'Moderar_Publicaciones --> Moderar_Publicaciones : Aprobar/Denegar
+
+'Ajustes --> [*]
 @enduml
