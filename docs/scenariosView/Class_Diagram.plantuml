@@ -1,25 +1,28 @@
-@startuml diagrama_clases
+@startuml
 skinparam linetype ortho
 hide empty methods
 hide empty circle
 skinparam nodesep 100
 skinparam ranksep 45
 'Clases principales
-class Facultad_virtual
-class Usuario {
--tema_de_interes: String
-}
+class Facultad
+class Tema_De_Interes
+class persona 
+persona o-d- Tema_De_Interes
 class Informacion
 class Evento
 class Calendario
-
-class Notificacion
 class Publicacion
 class Actividad
-'Clases que heredan de usuario
-class Estudiante
+class Club {
+ -tema de interes: string
+}
+'Clases que heredan de persona
+class Estudiante {
+ -carrera
+}
 class Profesor
-class Personal_apoyo
+class "Personal apoyo" as cp
 class Administrador
 'Clases que heredan de Informacion
 class Investigacion
@@ -27,38 +30,36 @@ class Proyecto
 'Clases que heredan de Evento
 class Taller
 class Seminario
+class "Evento institucional" as cei
 'Clases que heredan de Actividad
-class Actividad_deportiva
-class Grupo_de_Estudio
+class "Actividad deportiva" as cap
+class "Grupo de Estudio" as cge
 'Herencia
-Usuario <|-- Estudiante
-Usuario <|-l- Profesor
-Usuario <|- Personal_apoyo
-Usuario <|-l Administrador
+persona <|-- Estudiante
+persona <|-l- Profesor
+persona <|- cp
+persona <|-l Administrador
 Publicacion <|-- Informacion
 Publicacion <|-- Evento
 Publicacion <|-- Actividad
+Publicacion <|-- Club
 Informacion <|-- Investigacion
 Informacion <|-- Proyecto
-Actividad <|-- Actividad_deportiva
-Actividad <|-- Grupo_de_Estudio
+Actividad <|-- cap
+Actividad <|-- cge
 Evento <|-- Taller
 Evento <|-- Seminario
-
+Evento <|-- cei
 'Conexiones
-Facultad_virtual *-d- Usuario
-Facultad_virtual *-d- Calendario
+Facultad o-d- persona
+Facultad -d-> Calendario : tiene
 Evento "0..*" -u-o Calendario
+Club -> Actividad : tiene
 'Relaciones
-
-Usuario -u- "0..*" Notificacion : Recibe
-Publicacion "0..*" -u- Usuario : Comparte
-Administrador -l- Publicacion : Modera
+Publicacion "0..*" -u- persona : Comparte
 Estudiante -l- Evento : Publica
 Estudiante -l- Actividad : Publica
 Profesor -l- Informacion : Publica
-
 'Conexiones invisibles para formato del diagrama
-Publicacion -u[hidden]-- Usuario
-Publicacion -u[hidden]-- Administrador
+Publicacion -u[hidden]-- persona
 @enduml
