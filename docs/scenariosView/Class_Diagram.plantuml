@@ -71,7 +71,6 @@ Anuncio "0..*" -u- Miembro : Comparte
 Estudiante -l- Evento : Publica
 Estudiante -l- Actividad : Publica
 Profesor -l- Informacion : Publica
-
 'Conexiones invisibles para formato del diagrama
 
 Anuncio -u[hidden]-- Miembro
