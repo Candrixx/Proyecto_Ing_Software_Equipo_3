@@ -1,0 +1,18 @@
+@startuml uc1_login_c
+
+rectangle ": Member" as user 
+rectangle ": IU Login" as view
+rectangle ": login controller" as controller
+rectangle ": Database Login" as database
+rectangle ": IU Register " as  register
+rectangle ": register control" as control
+rectangle ": Database Register" as database2
+
+user --r- view : > 1: setClientData() \n < 5: showResult() \n > 6: submitClientData(id,password) \n 9: showResult() <
+view --u- register : > 2: setClientData()
+register --r- control : > 3: setClientData()
+control --r- database2 : > 4: createNewUser(id,password) 
+view --r- controller : > 7: submitClientData(id,password)
+controller --r- database : > 8: searchClientData(id,password)
+
+@enduml

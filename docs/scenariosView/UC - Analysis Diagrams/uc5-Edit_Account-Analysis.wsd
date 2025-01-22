@@ -1,0 +1,11 @@
+@startuml uc5-Edit_Account-Analysis
+:Member: as actor
+boundary "IU edit account" as interface
+control "account controller" as controller
+entity "database account" as database
+
+'connections
+actor -r-- interface
+interface -r-- controller
+controller -r-- database
+@enduml

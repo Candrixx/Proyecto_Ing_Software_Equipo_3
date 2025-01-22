@@ -1,0 +1,13 @@
+@startuml uc2_2_show_calendar_c
+rectangle ": User" as user
+rectangle ": Announcement view" as view
+rectangle ": show calendar view" as showCalendarView
+rectangle ": calendar controller" as controller
+rectangle ": database calendar" as database2
+
+user --r-> view : > 1: showcalendarUser(Userid) \n 5: showResult() < 
+view --r-> showCalendarView : > 2: showcalendarUser(Userid)
+showCalendarView --r-> controller : > 3: showcalendarUser(Userid)
+controller --r-> database2 : > 4: showcalendarUser(Userid)  
+
+@enduml

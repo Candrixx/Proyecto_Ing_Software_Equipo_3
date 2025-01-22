@@ -1,0 +1,12 @@
+@startuml uc4_publish_research
+:Member: as actor
+boundary "IU publish new research" as interface
+control "publish controller" as controller
+entity "database publish research" as database
+
+'connections
+actor -r-- interface
+interface -r-- controller
+controller -r-- database
+
+@enduml

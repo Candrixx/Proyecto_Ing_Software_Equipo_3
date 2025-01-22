@@ -1,0 +1,10 @@
+@startuml uc5-Edit_Account-Colaboration
+rectangle ": Member" as user
+rectangle ": IU edit account" as interface
+rectangle ": account controller" as controller
+rectangle ": database account" as database 
+
+user --r- interface : > 1: changeAccountInfo() \n 5: showResult() <
+interface --r- controller : > 2: changeAccountInfo()
+controller --r- database : > 3: changeAccountInfo() \n 4: setNewInfo() >
+@enduml

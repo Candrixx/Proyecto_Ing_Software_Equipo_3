@@ -1,0 +1,12 @@
+@startuml uc3_create_event
+:Member: as actor
+boundary "IU Create event" as view
+control "Create event control" as control
+entity "Database create event" as database
+
+'connections
+
+actor --r- view
+view --r- control
+control --r- database
+@enduml

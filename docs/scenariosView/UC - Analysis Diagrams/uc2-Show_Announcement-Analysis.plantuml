@@ -1,0 +1,21 @@
+@startuml uc2_Show_announcement
+:Member: as actor
+boundary "IU Announcement" as view
+boundary "IU Show calendar " as showCalendarView
+control "calendar controller" as controller
+control "Announcement control" as control
+control "add calendar" as controller2
+entity "database show calendar" as database
+entity "database announcement" as database2
+entity "database add calendar" as database3
+
+'Connection
+actor -r-- view
+view -r-- control
+control -r-- database2
+view --u- showCalendarView
+showCalendarView --r- controller
+controller --r- database
+showCalendarView --u- controller2
+controller2 --r- database3
+@enduml

@@ -1,0 +1,14 @@
+@startuml uc2_2_add_calendar_c
+
+rectangle ": User" as user
+rectangle ": Announcement view" as view
+rectangle ": add calendar view" as calendarView
+rectangle ": calendar controller" as controller2
+rectangle ": database " as database3
+
+user --r-> view : > 1: getAnnouncement(id) \n 6: showResult() <
+view --r-> calendarView : > 2: getAnnouncement(id)
+calendarView --r-> controller2 : > 3: getAnnouncement(id)
+controller2 --r-> database3 : > 4: getAnnouncement(id) \n 5: saveAnnouncementCalendarUser(idAnnouncemente,idUser) >
+
+@enduml
