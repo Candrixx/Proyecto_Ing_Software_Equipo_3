@@ -1,22 +1,12 @@
 @startuml uc2_show_announcement_c
 
-rectangle ": Member" as actor
-rectangle ": IU Announcement" as view
-rectangle ": Announcement control" as control
-rectangle ": database announcement" as database
-rectangle ": IU Show Calendar" as showCalendarView
-rectangle ": calendar controller" as controller
-rectangle ": database calendar" as database2
-rectangle ": calendar adds" as controller2
-rectangle ": database add calendar" as database3
+rectangle ": User" as actor
+rectangle ": NotificationUI" as view
+rectangle ": NotificationControl" as control
+rectangle ": Notification" as database
 
-actor --r- view : > 1: searchAnnouncement(id) \n 4: showAnnouncement() < \n > 5: showcalendarUser(Userid) \n 9: showCalendar() <
-view --r- control : > 2: searchAnnouncement(id)
-control --r- database : > 3: searchAnnouncement(id)
-view --u- showCalendarView : > 6: showcalendarUser(Userid)
-showCalendarView --r- controller : > 7: showcalendarUser(Userid)
-controller --r- database2 : > 8: showcalendarUser(Userid)
-showCalendarView --u- controller2 : < 10: getAnnouncement(id) \n 13: showresult() >
-controller2 --r- database3 : > 11: getAnnouncement(id) \n 12: saveAnnouncementCalendarUser(idAnnouncemente,idUser) >  
+actor --r- view : > 1: searchNotification(id) \n 4: showResult() <
+view --d- control : > 2: searchNotification(id)
+control --r- database : > 3: searchNotification(id)
 
 @enduml

@@ -1,11 +1,11 @@
 @startuml uc4_publish_research_c
 
-rectangle ": Member" as user
-rectangle ": IU publish new research" as interface
-rectangle ": publish controller" as controller
-rectangle ": database publish research" as database 
+rectangle ": User" as user
+rectangle ": PublishNewResearchUI" as interface
+rectangle ": ResearchControl" as controller
+rectangle ": Research" as database 
 
-user --r- interface : > 1: setDatapublish() \n 5: showResult() <
-interface --r- controller : > 2: setDatapublish()
-controller --r- database : > 3: setDatapublish() \n 4: createNewpublish() >
+user --r- interface : > 1: setDataResearch(title, topic, id) \n 5: showResult() <
+interface --d- controller : > 2: setDataResearch(title, topic, id)
+controller --r- database : 3: setNewResearch(title, topic, id) >
 @enduml

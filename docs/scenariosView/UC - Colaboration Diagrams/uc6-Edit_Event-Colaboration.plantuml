@@ -1,0 +1,12 @@
+@startuml uc2_2_add_calendar_c
+
+rectangle ": User" as user
+rectangle ": EditEventUI" as calendarView
+rectangle ": EventControl" as controller2
+rectangle ": Event " as database3
+
+user --r-> calendarView : > 1: setEventData(id, dataEvent) \n 4: showResult() <
+calendarView --d-> controller2 : > 2: setEventData(id, dataEvent)
+controller2 --r-> database3 : > 3: setEventData(id, dataEvenet)
+
+@enduml

@@ -1,8 +1,8 @@
 @startuml uc4_publish_research
-:Member: as actor
-boundary "IU publish new research" as interface
-control "publish controller" as controller
-entity "database publish research" as database
+:User: as actor
+boundary "PublishNewResearchUI" as interface
+control "ResearchControl" as controller
+entity "Research" as database
 
 'connections
 actor -r-- interface

@@ -1,18 +1,13 @@
 @startuml uc1_Login
-:Member: as actor
-boundary "IU Login" as interface
-boundary "IU Register" as interface2
-control "login controller" as controller
-control "register control" as control
-entity "database login" as database
-entity "database register" as database2
+:User: as actor
+boundary "LoginUI" as interface
+control "UserControl" as controller
+entity "User" as database
 
 'connections
 actor -r-- interface
-interface -u-- interface2
 interface -r-- controller
 controller -r-- database
-interface2 -r-- control
-control -r-- database2
 
 @enduml
+

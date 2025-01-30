@@ -1,14 +1,12 @@
 @startuml uc2_2_show_calenda
 :User: as actor
-boundary "Announcement view" as view
-boundary "show calendar view" as showCalendarView
-control "calendar controller" as controller
-entity database
+boundary "ShowCalendarUI" as showCalendarView
+control "CalendarControl" as controller
+entity Calendar
 
 'connections
 
-actor --r-> view
-view --r-> showCalendarView
+actor --r-> showCalendarView
 showCalendarView --r-> controller
-controller --r-> database
+controller --r-> Calendar
 @enduml

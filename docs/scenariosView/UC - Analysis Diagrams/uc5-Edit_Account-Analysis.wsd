@@ -1,8 +1,8 @@
 @startuml uc5-Edit_Account-Analysis
-:Member: as actor
-boundary "IU edit account" as interface
-control "account controller" as controller
-entity "database account" as database
+:User: as actor
+boundary "EditUserUI" as interface
+control "UserControl" as controller
+entity "User" as database
 
 'connections
 actor -r-- interface

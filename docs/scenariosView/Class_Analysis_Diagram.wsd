@@ -1,0 +1,139 @@
+@startuml clases
+hide circle
+hide empty members
+
+'Nuevas Clases | Añadir metodos despues xd
+class UserControl{
+    +setUserData(userId,password) 
+    +createNewUser(userId,password) 
+    +getUserData()
+    +submitUserData(userId,password)
+}
+class CalendarControl{
+    + showCalendarUser(userId)
+}
+class NotifcationControl{
+    + searchNotifcation(id)
+    +setNotifcation(id, Event, date)
+}
+class EventControl{
+    + setDataEvent(date, location, hour)
+    + addNewEvent(Event)
+} 
+class ResearchControl{
+    + setDataResearch(title, topic, id) 
+}
+class Interface {
+    + showResult()
+}
+
+class Notifcation {
+    -NotifcationId: int
+    -Event: Event 
+    +getDateNotifcation()
+    +getEventNotifcation()
+    +getNotifcationId()
+    +setNewNotifcation(id, Event)
+}
+class Event {
+    -title: String
+    -date: Date
+    -description: String
+    +getTitleEvent()
+    +getDateEvent()
+    +getDescriptioEvent()
+    +createNewEvent(date, location, hour)
+}
+
+class Research {
+    -title : String
+    -topic: String
+    -id : String
+    +getPublish()
+    +createNewResearch(title, topic, id)
+}
+
+class Calendar {
+    - events : List<events>
+    + addNewEvent(Event)
+}
+
+class User {
+    -id: String
+    -username: String
+    -career : String
+    -password: String
+    +getUserId()
+    +getUserName()
+    +getUserCareer()
+    +isUser(userId,password)
+    +setUserData(userId, name, career, password)
+    +createNewUser(userId, name, career, password)
+}
+
+class LoginUI {
+    + setUserData(userId, name, career,password)
+}
+
+class RegisterUI {
+    + setUserData(userId, name, career,password)
+}
+
+class ShowCalendarUI {
+    + showCalendarUser(userId)  
+}
+
+class AddEventUI {
+    + addNewEvent(idEvent,userId)
+}
+
+class NotifcationUI {
+    + searchNotifcation(id)
+    +setNotifcation(id, Event, date)
+}
+
+class CreateEventUI {
+    + setDataEvent(date, location, hour)
+}
+
+class PublishNewResearchUI {
+    + setDataResearch(title,id)
+}
+
+class EditUserUI {
+    + setUserData(userId, password)
+}
+
+class EditEventUI {
+    +  setEventData(id, dataEvent)
+}
+
+
+Interface <|-- LoginUI
+Interface <|-- RegisterUI
+Interface <|-- ShowCalendarUI
+Interface <|-- AddEventUI
+Interface <|-- NotifcationUI
+Interface <|-- EditEventUI
+Interface <|-- PublishNewResearchUI
+Interface <|-- CreateEventUI
+Interface <|-- EditUserUI
+
+LoginUI -- UserControl
+RegisterUI -- UserControl
+EditUserUI -- UserControl
+CreateEventUI -- EventControl
+EditEventUI -- EventControl
+AddEventUI -- CalendarControl
+ShowCalendarUI -- CalendarControl
+PublishNewResearchUI -- ResearchControl
+NotifcationUI -- NotifcationControl
+
+UserControl -- User 
+EventControl -- Event
+CalendarControl -- Calendar
+Calendar o-- Event 
+ResearchControl -- Research 
+NotifcationControl -- Notifcation 
+
+@enduml

@@ -1,13 +1,11 @@
 @startuml uc1_1_Register_c
-rectangle ": user" as user
-rectangle ": login view" as login
-rectangle ": register view" as  register
-rectangle ": register control" as control
-rectangle ": database" as database
+rectangle ": User" as user
+rectangle ": RegisterView" as  register
+rectangle ": UserControl" as control
+rectangle ": User" as database
 
-user --r-> login : > 1: getClientData() \n 4: showResult() <
-login --r-> register : > 2: getClientData()
-register --r-> control : > 3: getClientData()
-control --r-> database : > 4: createNewUser(id,password) 
+user --r-> register : > 1: setUserData(userId,name, career,password) \n 4: showResult() <
+register --r-> control : > 2: setUserData(userId,name, career,password)
+control --r-> database : > 3: createNewUser(userId, name, carreer, password) 
 
 @enduml

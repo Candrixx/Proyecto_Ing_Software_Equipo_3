@@ -1,0 +1,91 @@
+@startuml clases
+hide circle
+hide empty members
+'skinparam linetype ortho
+
+package "Notification Management" as NotificationManagement{
+
+    class Notification
+    class NotificationControl
+
+}
+
+package "Event Management" as EventManagement{
+
+    class Event
+    class EventControl
+
+}
+
+package "Research Management" as ResearchManagement{
+
+    class Research
+    class ResearchControl
+
+}
+
+package "Calendar Management" as CalendarManagement{
+
+    class Calendar
+    class CalendarControl
+
+}
+
+package "User Management" as UserManagement{
+
+    class UserControl
+    class User
+
+}
+
+package "UI" {
+
+    class Interface
+    class LoginUI
+    class RegisterUI
+    class ShowCalendarUI
+    class AddEventUI
+    class NotificationUI
+    class CreateEventUI
+    class PublishNewResearchUI
+    class EditUserUI
+    class EditEventUI
+
+}
+
+Interface <|-- LoginUI
+Interface <|-- RegisterUI
+Interface <|-- ShowCalendarUI
+Interface <|-- AddEventUI
+Interface <|-- NotificationUI
+Interface <|-- EditEventUI
+Interface <|-- PublishNewResearchUI
+Interface <|-- CreateEventUI
+Interface <|-- EditUserUI
+
+LoginUI -- UserControl
+RegisterUI -- UserControl
+EditUserUI -- UserControl
+CreateEventUI -- EventControl
+EditEventUI -- EventControl
+AddEventUI -- CalendarControl
+ShowCalendarUI -- CalendarControl
+PublishNewResearchUI -- ResearchControl
+NotificationUI -- NotificationControl
+
+UserControl -- User : "activate"
+EventControl -- Event
+CalendarControl -- Calendar
+ResearchControl -- Research : "publishes"
+NotificationControl -- Notification : "notifies"
+Calendar -- Event
+
+UI -l-- ResearchManagement
+UI --- UserManagement
+UI --- EventManagement
+UI --- CalendarManagement
+UI --- NotificationManagement
+CalendarManagement --- EventManagement
+
+@enduml
+'Hay un poco de programa en tu error 509

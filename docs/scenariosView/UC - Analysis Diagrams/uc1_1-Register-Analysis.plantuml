@@ -1,14 +1,13 @@
 @startuml uc_1_1_Register
 :User: as actor
-boundary "Login view" as login
-boundary "Register view" as register
-control "Register control" as control
-entity database
+boundary "RegisterView" as register
+control "UserControl" as control
+entity "User"
 
 'connections
 
-actor --r-> login
-login --r-> register
+actor --r-> register
 register --r-> control
-control --r-> database
+control -r-> User
+
 @enduml

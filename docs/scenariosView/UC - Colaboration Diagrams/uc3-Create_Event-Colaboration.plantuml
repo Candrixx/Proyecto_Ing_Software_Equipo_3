@@ -1,11 +1,11 @@
 @startuml uc3_create_event_c
-rectangle ": Member" as user
-rectangle ": IU Create event" as view
-rectangle ": Create event control" as control
-rectangle ": Database create event" as database
+rectangle ": User" as user 
+rectangle ": CreateEventUI" as view
+rectangle ": EventControl" as control
+rectangle ": Event" as database
 
-user --r- view : > 1: setDataEvent() \n 5: showResult() <
-view --r- control : > 2: setDataEvent()
-control --r- database : > 3: setDataEvent() \n 4: createNewEvent() >
+user --r- view : > 1: setDataEvent(date, location, hour) \n 5: showResult() <
+view --d- control : > 2: setDataEvent(date, location, hour)
+control --r- database : \n 3: setNewEvent(id) >
 
 @enduml

@@ -1,6 +1,6 @@
 @startuml uc3_create_event
 :User: as actor
-boundary "CreateEventUI" as view
+boundary "EditEventUI" as view
 control "EventControl" as control
 entity "Event" as database
 
