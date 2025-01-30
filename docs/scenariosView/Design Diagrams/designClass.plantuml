@@ -1,0 +1,21 @@
+@startuml designClass
+hide stereotype
+
+:User: as actor
+
+skinparam rectangle<<Border>> {
+  BorderThickness 3
+  BorderColor #333333
+}
+
+' this class is active
+rectangle "publishNewResearchUI" <<Border>>
+' this class is active
+rectangle "researchControl" <<Border>>
+rectangle research
+
+actor -r--> publishNewResearchUI
+publishNewResearchUI -r--> researchControl
+researchControl -r--> research
+
+@enduml

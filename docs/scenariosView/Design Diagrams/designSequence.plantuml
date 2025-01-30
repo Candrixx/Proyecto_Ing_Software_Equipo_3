@@ -1,0 +1,28 @@
+@startuml designSequence
+skinparam sequenceMessageAlign right
+hide stereotype
+
+skinparam participant<<Border>> {
+  BorderThickness 3
+  BorderColor #333333
+}
+
+actor ": User" as user
+'This is activate
+participant ": publishNewResearchUI" as publishNewResearchUI <<Border>>
+'This is activate
+participant ": researchControl" as researchControl <<Border>>
+participant ": research" as research
+
+activate user
+
+user -> publishNewResearchUI: 1: publish research
+activate publishNewResearchUI
+
+publishNewResearchUI -> researchControl : 2: setDataResearch(title, topic, id)
+activate researchControl
+
+researchControl -> research : 3: setNewResearch(title, topic, id)
+activate research
+
+@enduml

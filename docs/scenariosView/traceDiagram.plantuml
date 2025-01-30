@@ -1,0 +1,50 @@
+@startuml traceDiagram
+
+package ui {
+    rectangle "JFrame \n publishNewResearchUI" as frame
+    rectangle "JPanel \n screen" as JPanel
+    rectangle JButton
+    rectangle confirmar
+    rectangle usuario
+    rectangle JTextField
+    rectangle JLabel
+    rectangle Fecha
+    rectangle Ubicacion
+    rectangle Hora
+
+    frame -- JPanel
+    JPanel -- JButton
+    JPanel -- JTextField
+    JPanel -- JLabel
+    JLabel <|--Fecha
+    JLabel <|--Ubicacion
+    JLabel <|--Hora
+    JButton <|-- confirmar
+    JButton <|-- usuario
+}
+
+package back {
+    rectangle "Control Reseach" as controlback
+    rectangle "Research Data" as data
+}
+
+folder analysis {
+    :User: as actor
+    boundary "PublishNewResearchUI" as interface
+    control "ResearchControl" as controller
+    entity "Research" as database
+
+    'connections
+    actor -r-- interface
+    interface -r-- controller
+    controller -r-- database
+}
+interface ... frame : "trace"
+controller ... controlback : "trace"
+database ... data : "trace"
+
+@enduml
+'@andi_.art SIGANME EN INSTAGRAM
+'Alt+F4 a la vida porfa
+'x = rcos(t) :(
+'HELP PLS

@@ -1,4 +1,4 @@
-@startuml uc2_Show_notification
+@startuml uc2_Show_announcement
 :User: as actor
 boundary "NotificationUI" as view
 control "NotificationControl" as control

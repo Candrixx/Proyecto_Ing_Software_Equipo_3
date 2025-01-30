@@ -1,0 +1,7 @@
+@startuml deploymentDiagram
+
+node UserComputer
+component Logo.jar
+UserComputer *--> Logo.jar
+
+@enduml

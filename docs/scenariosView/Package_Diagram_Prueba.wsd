@@ -1,7 +1,6 @@
 @startuml clases
 hide circle
 hide empty members
-'skinparam linetype ortho
 
 package "Notification Management" as NotificationManagement{
 
