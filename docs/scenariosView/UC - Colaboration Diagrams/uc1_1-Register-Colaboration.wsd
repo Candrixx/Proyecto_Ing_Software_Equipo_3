@@ -5,7 +5,7 @@ rectangle ": UserControl" as control
 rectangle ": User" as database
 
 user --r-> register : > 1: setUserData(userId,name, career,password) \n 4: showResult() <
-register --r-> control : > 2: setUserData(userId,name, career,password)
+register --d-> control : > 2: setUserData(userId,name, career,password)
 control --r-> database : > 3: createNewUser(userId, name, carreer, password) 
 
 @enduml
