@@ -1,16 +1,16 @@
 package src.controllers;
-// uwu
 
-import java.sql.Date;
-import src.model.Notification;
+import java.time.LocalDateTime;
 
-public class NotificationControl {
-    public void searchNotification(int id){
-        
-    }
+import src.model.Event; 
 
-    public void setNotification(int id, Event event, Date date){
-        Notification notification = new Notification(notificationId, event);
-        //event.createNewEvent(event); help
+public class EventControl {
+    /*public void setDataEvent(String title, LocalDateTime date, String description, String location){
+
+    }*/
+
+    public void addNewEvent(String title, String date, String description, String location){
+        Event event = new Event(title, date, description, location);
+        event.createNewEvent(event);
     }
 }

@@ -3,7 +3,7 @@ package src.controllers;
 
 import java.sql.Date;
 import src.model.Notification;
-
+import src.model.Event; 
 import java.sql.Date;
 
 public class NotificationControl {
@@ -11,8 +11,8 @@ public class NotificationControl {
         
     }
 
-    public void setNotification(int id, Event event, Date date){
-        Notification notification = new Notification(notificationId, event);
+    public void setNotification(int id, Event event){
+        Notification notification = new Notification(id, event);
         //event.createNewEvent(event); help
     }
 }
