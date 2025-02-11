@@ -1,17 +1,27 @@
 package src.model;
 
+import src.model.Event;
 import java.sql.Date;
 
 public class Notification {
-    private Integer announcement = null;
+    private Integer notificationId = null;
     private Event event = null;
-    private Date date = null;
 
-    public Notification (Integer announcement, Event event, Date date) {
-        this.announcement = announcement;
+    public Notification (Integer notificationId, Event event) {
+        this.notificationId = notificationId;
         this.event = event;
-        this.date = date;
     }
 
-    
+    public Date getDateNotification(){
+        return this.event.getDate();
+    }
+
+    public Event getEventNotification(){
+        return this.event;
+    }
+
+    public Integer getNotificationID(){
+        return this.notificationId;
+    }
+
 }
