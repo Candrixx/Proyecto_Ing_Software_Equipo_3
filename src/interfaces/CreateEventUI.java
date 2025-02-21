@@ -6,8 +6,10 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 
 import javax.swing.*;
+import src.controllers.EventControl;
 
 public class CreateEventUI extends JFrame{
 
@@ -165,12 +167,14 @@ public class CreateEventUI extends JFrame{
                 String ubicacionEvento = locationOfEventInput.getText();
                 String tituloEvento = timeOfEventInput.getText();
                 String descripcionEvento = descriptionOfEventInput.getText();
+                EventControl eventControl = new EventControl();
+                eventControl.addNewEvent(tituloEvento, fechaEvento, descripcionEvento, ubicacionEvento);
 
             
-                System.out.println("Fecha del evento: " + fechaEvento);
+                /*System.out.println("Fecha del evento: " + fechaEvento);
                 System.out.println("Ubicación del evento: " + ubicacionEvento);
                 System.out.println("Título del evento: " + tituloEvento);
-                System.out.println("Descripción del evento: " + descripcionEvento);
+                System.out.println("Descripción del evento: " + descripcionEvento);*/
             }
 
 

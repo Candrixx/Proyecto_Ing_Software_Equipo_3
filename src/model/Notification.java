@@ -1,6 +1,8 @@
 package src.model;
 
 import src.model.Event;
+import java.sql.Date;
+
 
 public class Notification {
     private Integer notificationId = null;
@@ -11,9 +13,8 @@ public class Notification {
         this.event = event;
     }
 
-    public Date getDateNotification(){
-        return this.event.getDate();
-    }
+    /*public Date getDateNotification(){
+    }*/
 
     public Event getEventNotification(){
         return this.event;
