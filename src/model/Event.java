@@ -107,9 +107,34 @@ public class Event {
         }
     }
 
-    public void setDataEvent(){
+    public void editDataEvent(){
         Event eventRead = new Event();
         eventRead.readEvent(this.title);
+        try (BufferedReader br = new BufferedReader(new FileReader("src/model/txts/events.txt"));
+             FileWriter fw = new FileWriter("src/model/txts/events.txt")) {
+
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                if (linea.equals(getTitle())) {
+                    fw.write( this.title + "\n");
+                }
+                else if(linea.equals(getDescriptionEvent())){
+                    fw.write( this.description + "\n");
+                } 
+                else if(linea.equals(getDate())){
+                    fw.write( this.date + "\n");
+                } 
+                else if(linea.equals(getLocation())){
+                    fw.write( this.location + "\n");
+                } 
+                else {
+                    fw.write(linea + "\n");
+                }
+            }
+            System.out.println("Archivo modificado exitosamente.");
+        } catch (IOException e) {
+            System.err.println("Error al modificar el archivo: " + e.getMessage());
+        }
         
     }
 }
