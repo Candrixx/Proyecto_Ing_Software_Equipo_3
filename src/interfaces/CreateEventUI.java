@@ -1,4 +1,3 @@
-package src.interfaces;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -9,9 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-
 import src.controllers.EventControl;
-
 
 public class CreateEventUI extends JFrame{
 
@@ -79,10 +76,6 @@ public class CreateEventUI extends JFrame{
         buttonConfirm.setForeground(Color.white);
         buttonConfirm.setPreferredSize(new Dimension(300, 50));
         centerContentButtonPanel.add(buttonConfirm);
-
-        /*
-            
-        */
 
         //---centerContentInputPanel---
 
