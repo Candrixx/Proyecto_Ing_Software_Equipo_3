@@ -1,10 +1,8 @@
 package src.model;
 
-import java.time.*;
 import java.util.List;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Event {
     private String title = null;
@@ -12,6 +10,12 @@ public class Event {
     private String description = null;
     private String location = null;
 
+    public Event(){
+        this.title = null;
+        this.date = null;
+        this.description = null;
+        this.location = null;
+    }
 
     public Event (String title, String date, String description, String location) {
         this.title = title;
@@ -36,13 +40,12 @@ public class Event {
         return this.location;
     }
 
-    public void createNewEvent(Event event){
+    public void saveNewEvent(){
         List<String> lines = new ArrayList<String>();
         lines.add(title);
         lines.add(description);
         lines.add(date);
         lines.add(location);
-        lines.add("\n");
 
 
         File file = new File("src/model/txts/events.txt");
@@ -77,5 +80,36 @@ public class Event {
         catch(Exception e){
             System.err.println("ERROR");
         }
+    }
+
+    public void readEvent(String title){
+        try (BufferedReader br = new BufferedReader(new FileReader("src/model/txts/events.txt"))) {
+            int count = -1;
+            String line;
+            while ((line = br.readLine()) != null) {
+                if(line == title || (0 <= count && count < 3)){
+                    switch(count){
+                        case 0:
+                            this.description = line;
+                        break;
+                        case 1:
+                            this.date = line;
+                        break;
+                        case 2:
+                            this.location = line;
+                        break;
+                    }
+                    count++;
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error al leer el archivo: " + e.getMessage());
+        }
+    }
+
+    public void setDataEvent(){
+        Event eventRead = new Event();
+        eventRead.readEvent(this.title);
+        
     }
 }
