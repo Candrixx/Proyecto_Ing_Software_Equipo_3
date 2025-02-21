@@ -46,6 +46,7 @@ public class Event {
         lines.add(description);
         lines.add(date);
         lines.add(location);
+        lines.add("\n");
 
 
         File file = new File("src/model/txts/events.txt");

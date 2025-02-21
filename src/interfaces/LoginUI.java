@@ -113,7 +113,7 @@ public class LoginUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 
                 String userName = userNameTextField.getText(); 
-                String userPassWord = userPassWordJLabel.getText();
+                String userPassWord = userPasswordTextField.getText();
                 
                 //Usa las variables UserName y userPassword para mandarlo a la base de datose
 
