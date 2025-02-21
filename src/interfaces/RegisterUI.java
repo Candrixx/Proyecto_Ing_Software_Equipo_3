@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import src.controllers.UserControl;
+
 public class RegisterUI extends JFrame {
     
     private JPanel currentScreen;
@@ -138,11 +140,15 @@ public class RegisterUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 
-                String userGmail = userGmailJLabel.getText(); 
-                String userPassWord = userConfirPasswordJLabel.getText();
+                String userGmail = userGmailTextField.getText(); 
+                String userPassWord = userConfirPasswordTextField.getText();
                 String userId = userIdTextField.getText();
+                Integer userIdInteger = Integer.parseInt(userId);
+                
                 
                 //Usa las variables UserName y userPassword para mandarlo a la base de datose
+                UserControl userControl = new UserControl();
+                userControl.addNewUser(userIdInteger, userGmail, userPassWord);
 
             }
 
