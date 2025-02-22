@@ -88,17 +88,24 @@ public class Event {
             int count = -1;
             String line;
             while ((line = br.readLine()) != null) {
-                if(line == title || (0 <= count && count < 3)){
-                    switch(count){
-                        case 0:
-                            this.description = line;
-                        break;
-                        case 1:
-                            this.date = line;
-                        break;
-                        case 2:
-                            this.location = line;
-                        break;
+                if(line.equals(title) || (0 <= count && count < 3)){
+                    if(count < 0){
+                        this.title = line;
+                    }
+                    else{
+                        switch(count){
+                            case 0:
+                                this.description = line;
+                            break;
+                            case 1:
+                                this.date = line;
+                            break;
+                            case 2:
+                                this.location = line;
+                            break;
+                            default:
+                            break;
+                        }
                     }
                     count++;
                 }
@@ -111,31 +118,52 @@ public class Event {
     public void editDataEvent(){
         Event eventRead = new Event();
         eventRead.readEvent(this.title);
-        try (BufferedReader br = new BufferedReader(new FileReader("src/model/txts/events.txt"));
-             FileWriter fw = new FileWriter("src/model/txts/events.txt")) {
-
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                if (linea.equals(getTitle())) {
-                    fw.write( this.title + "\n");
-                }
-                else if(linea.equals(getDescriptionEvent())){
-                    fw.write( this.description + "\n");
-                } 
-                else if(linea.equals(getDate())){
-                    fw.write( this.date + "\n");
-                } 
-                else if(linea.equals(getLocation())){
-                    fw.write( this.location + "\n");
-                } 
-                else {
-                    fw.write(linea + "\n");
+        System.out.println(eventRead.getTitle());
+        System.out.println(eventRead.getDescriptionEvent());
+        System.out.println(eventRead.getDate());
+        System.out.println(eventRead.getLocation());
+        
+        try {
+            // 1. Leer el archivo a la memoria
+            List<String> lines = new ArrayList<>();
+            try (BufferedReader br = new BufferedReader(new FileReader("src/model/txts/events.txt"))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    lines.add(line);
                 }
             }
+
+            int count = -1;
+            // 2. Modificar el contenido en la memoria
+            for (int i = 0; i < lines.size(); i++) {
+                if (lines.get(i).equals(eventRead.getTitle()) && count < 0) {
+                    lines.set(i, this.title);
+                    count++;
+                }
+                else if(lines.get(i).equals(eventRead.getDescriptionEvent()) && count == 0){
+                    lines.set(i, this.description);
+                    count++;
+                }
+                else if(lines.get(i).equals(eventRead.getDate()) && count == 1){
+                    lines.set(i, this.date);
+                    count++;
+                }
+                else if(lines.get(i).equals(eventRead.getLocation()) && count == 2){
+                    lines.set(i, this.location);
+                    count++;
+                }
+            }
+
+            // 3. Reescribir el archivo con el nuevo contenido
+            try (FileWriter fw = new FileWriter("src/model/txts/events.txt")) {
+                for (String line : lines) {
+                    fw.write(line + "\n");
+                }
+            }
+
             System.out.println("Archivo modificado exitosamente.");
         } catch (IOException e) {
             System.err.println("Error al modificar el archivo: " + e.getMessage());
         }
-        
     }
 }

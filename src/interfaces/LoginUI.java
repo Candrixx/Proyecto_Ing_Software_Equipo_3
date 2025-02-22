@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import src.controllers.UserControl;
+
 public class LoginUI extends JFrame {
 
     private JPanel currentScreen;
@@ -70,9 +72,9 @@ public class LoginUI extends JFrame {
         labelsPanel.add(userPassWordJLabel);
 
         // JPasswordField para la contraseña
-        JPasswordField userPasswordField = new JPasswordField();
+        JTextField userPasswordField = new JTextField();
         userPasswordField.setMaximumSize(new Dimension(200, 30)); // Tamaño máximo del JPasswordField
-        userPasswordField.setAlignmentX(JPasswordField.LEFT_ALIGNMENT); // Alinear a la izquierda
+        userPasswordField.setAlignmentX(JTextField.LEFT_ALIGNMENT); // Alinear a la izquierda
         labelsPanel.add(userPasswordField);
 
         //title
@@ -113,9 +115,15 @@ public class LoginUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 
                 String userName = userNameTextField.getText(); 
-                String userPassWord = userPasswordTextField.getText();
-                
-                //Usa las variables UserName y userPassword para mandarlo a la base de datose
+                String userPassWord = userPasswordField.getText();
+
+                UserControl userControl = new UserControl();
+                if(userControl.isUser(userName, userPassWord)){
+                    System.out.println("Usuario Encontrado");
+                }
+                else{
+                    System.out.println("Usuario NO Encontrado");
+                }
 
             }
 
