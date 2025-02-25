@@ -88,3 +88,23 @@ Traza:
 ![alt text](trace.png)
 Diagrama de Despliegue:
 ![alt text](deployment.png)
+
+Modelo de Implementación:
+Las librerias utilizadas son:
+java.awt.BorderLayout;
+java.awt.Color;
+java.awt.Component;
+java.awt.Dimension;
+java.awt.FlowLayout;
+java.awt.Font;
+java.awt.event.ActionEvent;
+java.awt.event.ActionListener;
+java.io.BufferedReader;
+java.io.File;
+java.io.FileReader;
+java.io.FileWriter;
+java.io.IOException;
+java.io.PrintWriter;
+java.util.ArrayList;
+java.util.List;
+En la carpeta src/interfaces se encuentran las interfaces
