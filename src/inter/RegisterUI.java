@@ -1,3 +1,5 @@
+package src.inter;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -8,8 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-
-import src.controllers.UserControl;
 
 public class RegisterUI extends JFrame {
     
@@ -143,12 +143,8 @@ public class RegisterUI extends JFrame {
                 String userGmail = userGmailTextField.getText(); 
                 String userPassWord = userConfirPasswordTextField.getText();
                 String userId = userIdTextField.getText();
-                Integer userIdInteger = Integer.parseInt(userId);
-                
                 
                 //Usa las variables UserName y userPassword para mandarlo a la base de datose
-                UserControl userControl = new UserControl();
-                userControl.addNewUser(userIdInteger, userGmail, userPassWord);
 
             }
 
@@ -158,8 +154,8 @@ public class RegisterUI extends JFrame {
         currentScreen.revalidate();
         currentScreen.repaint();
     }
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         RegisterUI registerUI = new RegisterUI();
         registerUI.setVisible(true);
-    }
+    }*/
 }

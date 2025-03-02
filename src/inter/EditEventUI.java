@@ -1,3 +1,5 @@
+package src.inter;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -8,18 +10,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-import src.controllers.EventControl;
 
-public class CreateEventUI extends JFrame{
+import src.control.EventControl;
+
+public class EditEventUI extends JFrame{
 
     private JPanel currentScreen;
-    
-    public CreateEventUI(){
+
+    public EditEventUI(){
 
         currentScreen = new JPanel();
         currentScreen.setLayout(new BorderLayout());
 
-        showScreenCreateEvent();
+        showScreenModifyEvent();
         add(currentScreen);
 
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -27,9 +30,10 @@ public class CreateEventUI extends JFrame{
         setResizable(false);
         setLocationRelativeTo(null);
 
+
     }
 
-    private void showScreenCreateEvent(){
+    public void showScreenModifyEvent(){
         Font newStyle = new Font("Arial", Font.BOLD, 25);
         Color colorLightGray = new Color(156,156,156);
         Color colorDarkGray = new Color(75,73,71);
@@ -57,7 +61,7 @@ public class CreateEventUI extends JFrame{
         centerContentTitlePanel.setBorder(BorderFactory.createEmptyBorder(0, 60, 0, 0));
         centerContentTitlePanel.setLayout(new BorderLayout());
 
-        JLabel titleCenterContentPanel = new JLabel("Crear evento");
+        JLabel titleCenterContentPanel = new JLabel("Modificar evento");
         titleCenterContentPanel.setFont(newStyle);
         titleCenterContentPanel.setForeground(Color.WHITE);
         centerContentTitlePanel.add(titleCenterContentPanel,BorderLayout.WEST);
@@ -162,18 +166,14 @@ public class CreateEventUI extends JFrame{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                String fechaEvento = dateOfEventInput.getText();
-                String ubicacionEvento = locationOfEventInput.getText();
-                String tituloEvento = timeOfEventInput.getText();
-                String descripcionEvento = descriptionOfEventInput.getText();
-                EventControl eventControl = new EventControl();
-                eventControl.addNewEvent(tituloEvento, fechaEvento, descripcionEvento, ubicacionEvento);
+                String modifyDateOfEvent = dateOfEventInput.getText();
+                String modifylocationOfEvent = locationOfEventInput.getText();
+                String modifytimeOfEvent = timeOfEventInput.getText();
+                String modifydescriptionOfEvent = descriptionOfEventInput.getText();
 
-            
-                /*System.out.println("Fecha del evento: " + fechaEvento);
-                System.out.println("Ubicación del evento: " + ubicacionEvento);
-                System.out.println("Título del evento: " + tituloEvento);
-                System.out.println("Descripción del evento: " + descripcionEvento);*/
+                EventControl eventControl = new EventControl();
+                eventControl.setDataEvent(modifytimeOfEvent, modifyDateOfEvent, modifydescriptionOfEvent, modifylocationOfEvent);
+
             }
 
 
@@ -185,10 +185,11 @@ public class CreateEventUI extends JFrame{
 
         currentScreen.revalidate();
         currentScreen.repaint();
+
+    }
+    public static void main(String[] args) {
+        EditEventUI modifyEventUI = new EditEventUI();
+        modifyEventUI.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        CreateEventUI createEventUI = new CreateEventUI();
-        createEventUI.setVisible(true);
-    }
 }

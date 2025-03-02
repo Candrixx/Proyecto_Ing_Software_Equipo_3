@@ -10,84 +10,84 @@ Integrantes:
 Modelo de Dominio
 
 - Diagrama de Clases
-![alt text](class_diagram.png)
+![alt text](<docs/scenariosView/sprites readme/class_diagram.png>)
 
 - Diagrama de Estados
-![alt text](status_diagram.png)
+![alt text](<docs/scenariosView/sprites readme/status_diagram.png>)
 
 - Diagrama de Casos de Uso
-![alt text](use_case_diagram.png)
+![alt text](<docs/scenariosView/sprites readme/use_case_diagram.png>)
 
 - Prototipo de Pantallas
 | Iniciar Sesión |
-![alt text](interface1.png)
+![alt text](<docs/scenariosView/sprites readme/interface1.png>)
 | Registrarse |
-![alt text](interface2.png)
+![alt text](<docs/scenariosView/sprites readme/interface2.png>)
 | Tablón de Anuncio |
-![alt text](interface3.png)
+![alt text](<docs/scenariosView/sprites readme/interface3.png>)
 | Mostrar Calendario |
-![alt text](interface4.png)
+![alt text](<docs/scenariosView/sprites readme/interface4.png>)
 | Publicar Evento |
-![alt text](interface5.png)
+![alt text](<docs/scenariosView/sprites readme/interface5.png>)
 | Publicar Investigación |
-![alt text](interface6.png)
+![alt text](<docs/scenariosView/sprites readme/interface6.png>)
 | Editar Perfil |
-![alt text](interface7.png)
+![alt text](<docs/scenariosView/sprites readme/interface7.png>)
 
 - Diagrama de Analisis
 | Login |
-![alt text](analysis1.png)
+![alt text](<docs/scenariosView/sprites readme/analysis1.png>)
 | Register |
-![alt text](analysis2.png)
+![alt text](<docs/scenariosView/sprites readme/analysis2.png>)
 | Show Notification |
-![alt text](analysis3.png)
+![alt text](<docs/scenariosView/sprites readme/analysis3.png>)
 | Show Calendary |
-![alt text](analysis4.png)
+![alt text](<docs/scenariosView/sprites readme/analysis4.png>)
 | Add Event |
-![alt text](analysis5.png)
+![alt text](<docs/scenariosView/sprites readme/analysis5.png>)
 | Create Event |
-![alt text](analysis6.png)
+![alt text](<docs/scenariosView/sprites readme/analysis6.png>)
 | Publish Reseach |
-![alt text](analysis7.png)
+![alt text](<docs/scenariosView/sprites readme/analysis7.png>)
 | Edit Account |
-![alt text](analysis8.png)
+![alt text](<docs/scenariosView/sprites readme/analysis8.png>)
 | Edit Event |
-![alt text](analysis9.png)
+![alt text](<docs/scenariosView/sprites readme/analysis9.png>)
 
 - Diagrama de Colaboracion
 | Login |
-![alt text](colaboration1.png)
+![alt text](<docs/scenariosView/sprites readme/colaboration1.png>)
 | Register |
-![alt text](colaboration2.png)
+![alt text](<docs/scenariosView/sprites readme/colaboration2.png>)
 | Show Notification |
-![alt text](colaboration3.png)
+![alt text](<docs/scenariosView/sprites readme/colaboration3.png>)
 | Show Calendary |
-![alt text](colaboration4.png)
+![alt text](<docs/scenariosView/sprites readme/colaboration4.png>)
 | Add Event |
-![alt text](colaboration5.png)
+![alt text](<docs/scenariosView/sprites readme/colaboration5.png>)
 | Create Event |
-![alt text](colaboration6.png)
+![alt text](<docs/scenariosView/sprites readme/colaboration6.png>)
 | Publish Reseach |
-![alt text](colaboration7.png)
+![alt text](<docs/scenariosView/sprites readme/colaboration7.png>)
 | Edit Account |
-![alt text](colaboration8.png)
+![alt text](<docs/scenariosView/sprites readme/colaboration8.png>)
 | Edit Event |
-![alt text](colaboration9.png)
+![alt text](<docs/scenariosView/sprites readme/colaboration9.png>)
 
 - Diagrama de Clases de Analisis
-![alt text](class_analysis.png)
+![alt text](<docs/scenariosView/sprites readme/class_analysis.png>)
 
 - Diagrama de Paquetes de Analisis
-![alt text](package.png)
+![alt text](<docs/scenariosView/sprites readme/package.png>)
 
 - Diagrama Caso de Uso Representativo
-![alt text](desing_class.png)
+![alt text](<docs/scenariosView/sprites readme/desing_class.png>)
 Secuencia:
-![alt text](desing_secuence.png)
+![alt text](<docs/scenariosView/sprites readme/desing_secuence.png>)
 Traza:
-![alt text](trace.png)
+![alt text](<docs/scenariosView/sprites readme/trace.png>)
 Diagrama de Despliegue:
-![alt text](deployment.png)
+![alt text](<docs/scenariosView/sprites readme/deployment.png>)
 
 Modelo de Implementación:
 Las librerias utilizadas son:

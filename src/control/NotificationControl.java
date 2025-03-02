@@ -1,4 +1,4 @@
-package src.controllers;
+package src.control;
 // uwu
 
 import java.sql.Date;

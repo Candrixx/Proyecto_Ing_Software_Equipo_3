@@ -1,3 +1,5 @@
+package src.inter;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -8,7 +10,8 @@ import java.awt.Font;
 
 import javax.swing.*;
 
-import src.controllers.UserControl;
+//import src.control.UserControl;
+import src.inter.NavBarUI;
 
 public class EditUserUI extends JFrame {
 
@@ -124,8 +127,8 @@ public class EditUserUI extends JFrame {
                 String userId = userIdTextField.getText();
                 Integer userIdInteger = Integer.parseInt(userId);
 
-                UserControl userControl = new UserControl();
-                userControl.setUserData(userIdInteger, userName, userPassWord);
+                /*UserControl userControl = new UserControl();
+                userControl.setUserData(userIdInteger, userName, userPassWord);*/
                 
                 //Usa las variables UserName y userPassword para mandarlo a la base de datose
 
