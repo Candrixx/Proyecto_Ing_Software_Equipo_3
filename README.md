@@ -2,7 +2,7 @@ Logo
 
 Integrantes:
 - Kevin Villegas
-- Diego de León
+- Diego De León
 - Andrea Diaz
 - Juan Belisario
 - Carlos Arena
@@ -108,3 +108,8 @@ java.io.PrintWriter;
 java.util.ArrayList;
 java.util.List;
 En la carpeta src/interfaces se encuentran las interfaces
+
+Modelo de Pruebas:
+Pruebas unitarias realizadas:
+testEvent.java
+testUser.java
