@@ -13,4 +13,11 @@ public class EventControl {
         Event event = new Event(title, date, description, location);
         event.saveNewEvent();
     }
+
+    //Experimental
+    public Event searchEvent(String title){
+        Event event = new Event(title,null,null,null);
+        event.readEvent(title);
+        return event;
+    }
 }
