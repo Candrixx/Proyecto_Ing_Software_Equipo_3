@@ -1,13 +1,17 @@
+package  src.vistas;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 import javax.swing.*;
 
 public class NotificationUI extends JFrame {
-
     private JPanel currentScreen;
+    private String userEmail;
 
     private JButton createButton(String text) {
         JButton button = new JButton(text);
@@ -18,7 +22,8 @@ public class NotificationUI extends JFrame {
         return button;
     }
 
-    public NotificationUI() {
+    public NotificationUI(String userEmail) {
+        this.userEmail=userEmail;
         currentScreen = new JPanel();
         currentScreen.setLayout(new BorderLayout());
 
@@ -36,7 +41,7 @@ public class NotificationUI extends JFrame {
         currentScreen.removeAll();
 
         // ------------------------NavBar panel------------------------
-        NavBarUI navBarUI = new NavBarUI();
+        NavBarUI navBarUI = new NavBarUI(userEmail);
         currentScreen.add(navBarUI, BorderLayout.NORTH);
 
         // ------------------------Center panel------------------------
@@ -74,6 +79,18 @@ public class NotificationUI extends JFrame {
         JButton createEventButton = createButton("Crear Evento");
         rightPanel.add(createEventButton);
 
+        createEventButton.addActionListener(new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e){
+                CreateEventUI createEventUI = new CreateEventUI(userEmail);
+                createEventUI.setVisible(true);
+                dispose();
+            }
+        });
+
+
+
         currentScreen.add(rightPanel, BorderLayout.EAST);
 
         // ------------------------Refrest the new panel------------------------
@@ -81,8 +98,4 @@ public class NotificationUI extends JFrame {
         currentScreen.repaint();
     }
 
-    public static void main(String[] args) {
-        NotificationUI notificationUI = new NotificationUI();
-        notificationUI.setVisible(true);
-    }
 }

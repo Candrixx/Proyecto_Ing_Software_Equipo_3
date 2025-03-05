@@ -4,6 +4,7 @@ import src.model.User;
 
 public class UserControl {
 
+
     public boolean isUser(String email, String password){
         User user = new User();
         return user.isUser(email, password);

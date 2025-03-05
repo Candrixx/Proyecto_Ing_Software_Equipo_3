@@ -1,3 +1,4 @@
+package src.vistas;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -6,6 +7,7 @@ import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import src.vistas.LoginUI;
 
 import javax.swing.*;
 
@@ -63,7 +65,7 @@ public class RegisterUI extends JFrame {
         JPanel labelsPanel = new JPanel();
         labelsPanel.setBackground(Color.DARK_GRAY); // Fondo del panel
         labelsPanel.setLayout(new BoxLayout(labelsPanel, BoxLayout.Y_AXIS));
-        labelsPanel.setBorder(BorderFactory.createEmptyBorder(30, 180, 0, 0));
+        labelsPanel.setBorder(BorderFactory.createEmptyBorder(30, 228, 0, 0));
 
         JLabel userGmailJLabel = new JLabel("Correo electronico:");
         userGmailJLabel.setFont(inputStyle);
@@ -120,14 +122,24 @@ public class RegisterUI extends JFrame {
         JPanel buttonContentCenterPanel = new JPanel();
         buttonContentCenterPanel.setBackground(Color.DARK_GRAY);
         buttonContentCenterPanel.setPreferredSize(new Dimension(100, 100));
-        buttonContentCenterPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
+        buttonContentCenterPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
+        buttonContentCenterPanel.setLayout(new BoxLayout(buttonContentCenterPanel, BoxLayout.Y_AXIS));
 
         JButton confirButton = new JButton("Confirmar");
-        confirButton.setFont(new Font("Arial", Font.BOLD, 25));
+        confirButton.setFont(new Font("Arial", Font.BOLD, 30));
         confirButton.setBackground(new Color(144, 238, 144));
         confirButton.setForeground(Color.white);
-        confirButton.setPreferredSize(new Dimension(300, 50));
+        confirButton.setAlignmentX(JButton.CENTER_ALIGNMENT);
         buttonContentCenterPanel.add(confirButton);
+
+        JButton loginButton = new JButton("¿Ya tienes cuenta? Inicia sesión");
+        loginButton.setFont(new Font("Arial", Font.PLAIN, 14));
+        loginButton.setBackground(Color.DARK_GRAY);
+        loginButton.setForeground(Color.LIGHT_GRAY);
+        loginButton.setBorderPainted(false);
+        loginButton.setContentAreaFilled(false);
+        loginButton.setAlignmentX(JButton.CENTER_ALIGNMENT);
+        buttonContentCenterPanel.add(loginButton);
 
         contentCenterPanel.add(buttonContentCenterPanel, BorderLayout.SOUTH);
         contentCenterPanel.add(labelsPanel, BorderLayout.CENTER);
@@ -139,27 +151,45 @@ public class RegisterUI extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                UserControl userControl = new UserControl();
                 String userGmail = userGmailTextField.getText(); 
-                String userPassWord = userConfirPasswordTextField.getText();
+                String userPassWord =userPasswordTextField.getText();
+                String userConfirPassword = userConfirPasswordTextField.getText();
+
+                if (userGmail.trim().isEmpty() || userPassWord.trim().isEmpty() || userConfirPassword.trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Por favor llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                if(!userPassWord.equals(userConfirPassword)){
+                    JOptionPane.showMessageDialog(null, "Contraseñas no son iguales", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                if(userControl.isUser(userGmail, userConfirPassword)){
+                    JOptionPane.showMessageDialog(null, "Usuario Existente", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 String userId = userIdTextField.getText();
                 Integer userIdInteger = Integer.parseInt(userId);
                 
                 
                 //Usa las variables UserName y userPassword para mandarlo a la base de datose
-                UserControl userControl = new UserControl();
+                
                 userControl.addNewUser(userIdInteger, userGmail, userPassWord);
-
+                new LoginUI();
+                dispose();
             }
 
+        });
 
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new LoginUI();
+                dispose();
+            }
         });
 
         currentScreen.revalidate();
         currentScreen.repaint();
-    }
-    public static void main(String[] args) {
-        RegisterUI registerUI = new RegisterUI();
-        registerUI.setVisible(true);
     }
 }

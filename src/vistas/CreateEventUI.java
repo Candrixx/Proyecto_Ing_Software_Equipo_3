@@ -1,3 +1,4 @@
+package  src.vistas;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -7,20 +8,21 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
 
+import javax.swing.*;
 import src.controllers.EventControl;
 
-public class EditEventUI extends JFrame{
+public class CreateEventUI extends JFrame{
 
     private JPanel currentScreen;
-
-    public EditEventUI(){
-
+    private String userEmail;
+    
+    public CreateEventUI(String userEmail){
+        this.userEmail = userEmail;
         currentScreen = new JPanel();
         currentScreen.setLayout(new BorderLayout());
 
-        showScreenModifyEvent();
+        showScreenCreateEvent();
         add(currentScreen);
 
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -28,10 +30,10 @@ public class EditEventUI extends JFrame{
         setResizable(false);
         setLocationRelativeTo(null);
 
-
     }
 
-    public void showScreenModifyEvent(){
+    private void showScreenCreateEvent(){
+        System.out.println("uwu");
         Font newStyle = new Font("Arial", Font.BOLD, 25);
         Color colorLightGray = new Color(156,156,156);
         Color colorDarkGray = new Color(75,73,71);
@@ -39,7 +41,7 @@ public class EditEventUI extends JFrame{
         currentScreen.removeAll();
 
         // ------------------------NavBar panel------------------------
-        NavBarUI navBarUI = new NavBarUI();
+        NavBarUI navBarUI = new NavBarUI(userEmail);
         currentScreen.add(navBarUI, BorderLayout.NORTH);
 
         // ------------------------Center panel------------------------
@@ -59,7 +61,7 @@ public class EditEventUI extends JFrame{
         centerContentTitlePanel.setBorder(BorderFactory.createEmptyBorder(0, 60, 0, 0));
         centerContentTitlePanel.setLayout(new BorderLayout());
 
-        JLabel titleCenterContentPanel = new JLabel("Modificar evento");
+        JLabel titleCenterContentPanel = new JLabel("Crear evento");
         titleCenterContentPanel.setFont(newStyle);
         titleCenterContentPanel.setForeground(Color.WHITE);
         centerContentTitlePanel.add(titleCenterContentPanel,BorderLayout.WEST);
@@ -164,30 +166,30 @@ public class EditEventUI extends JFrame{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                String modifyDateOfEvent = dateOfEventInput.getText();
-                String modifylocationOfEvent = locationOfEventInput.getText();
-                String modifytimeOfEvent = timeOfEventInput.getText();
-                String modifydescriptionOfEvent = descriptionOfEventInput.getText();
+                String fechaEvento = dateOfEventInput.getText();
+                String ubicacionEvento = locationOfEventInput.getText();
+                String tituloEvento = timeOfEventInput.getText();
+                String descripcionEvento = descriptionOfEventInput.getText();
+
+                if(fechaEvento.trim().isEmpty() || ubicacionEvento.trim().isEmpty() || tituloEvento.trim().isEmpty() || descripcionEvento.trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Por favor llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
 
                 EventControl eventControl = new EventControl();
-                eventControl.setDataEvent(modifytimeOfEvent, modifyDateOfEvent, modifydescriptionOfEvent, modifylocationOfEvent);
-
+                eventControl.addNewEvent(tituloEvento, fechaEvento, descripcionEvento, ubicacionEvento);
+                NotificationUI notificationUI = new NotificationUI(userEmail);
+                notificationUI.setVisible(true);
+                dispose();
             }
-
-
         });
     
         centerContentButtonPanel.add(buttonConfirm);
 
         // ------------------------Refrest panel------------------------
-
+        
         currentScreen.revalidate();
         currentScreen.repaint();
-
-    }
-    public static void main(String[] args) {
-        EditEventUI modifyEventUI = new EditEventUI();
-        modifyEventUI.setVisible(true);
     }
 
 }

@@ -1,3 +1,4 @@
+package  src.vistas;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -6,6 +7,7 @@ import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import src.vistas.NotificationUI;
 
 import javax.swing.*;
 
@@ -117,25 +119,29 @@ public class LoginUI extends JFrame {
                 String userName = userNameTextField.getText(); 
                 String userPassWord = userPasswordField.getText();
 
+                if(userName.trim().isEmpty() || userPassWord.trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Por favor llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
                 UserControl userControl = new UserControl();
                 if(userControl.isUser(userName, userPassWord)){
                     System.out.println("Usuario Encontrado");
+                    NotificationUI notificationUI = new NotificationUI(userName);
+                    notificationUI.setVisible(true);
+                    dispose();
                 }
                 else{
                     System.out.println("Usuario NO Encontrado");
+                    JOptionPane.showMessageDialog(null, "Datos ingresados incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
             }
-
-
         });
 
         currentScreen.revalidate();
         currentScreen.repaint();
+        setVisible(true);
     }
 
-    public static void main(String[] args) {
-        LoginUI loginUI = new LoginUI();
-        loginUI.setVisible(true);
-    }
 }

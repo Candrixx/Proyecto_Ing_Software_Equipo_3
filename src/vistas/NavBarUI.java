@@ -1,3 +1,4 @@
+package  src.vistas;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -5,6 +6,9 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 
 import javax.swing.*;
+
+import src.controllers.EventControl;
+import src.controllers.UserControl;
 
 public class NavBarUI extends JPanel {
     
@@ -41,7 +45,6 @@ public class NavBarUI extends JPanel {
         userButtonPanel.add(userButton);
 
         add(userButtonPanel, BorderLayout.EAST);
-
     }
 
     public NavBarUI(String nameButton){
