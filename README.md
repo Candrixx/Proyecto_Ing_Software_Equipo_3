@@ -110,7 +110,7 @@ java.util.List;
 
 En la carpeta src/main utilizando el cmd escriba
 
-javac .\src\vistas\*.java
+javac .\src\vistas \*.java
 
 javac .\src\main\Main.java
 
