@@ -107,7 +107,12 @@ java.io.IOException;
 java.io.PrintWriter;
 java.util.ArrayList;
 java.util.List;
-En la carpeta src/interfaces se encuentran las interfaces
+
+En la carpeta src/main utilizando el cmd escriba
+
+javac .\src\vistas\*.java
+
+javac .\src\main\Main.java
 
 Modelo de Pruebas:
 Pruebas unitarias realizadas:
